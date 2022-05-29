@@ -1,12 +1,12 @@
-import Router from '@koa/router';
 import { readFile } from 'fs/promises';
+import Router from '@koa/router';
 import { createItemController, getItemController } from './components/items/ItemsController.js';
 const { version } = JSON.parse((await readFile('./package.json')).toString());
 
 const router = Router();
 
 router.get('/healthcheck', (ctx) => {
-  ctx.body = { version: version}
+  ctx.body = { version: version };
 });
 
 router.post('/echo', (ctx) => {

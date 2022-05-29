@@ -1,11 +1,12 @@
 import ItemsDAL from './ItemsDAL.js';
 
-export const createItemService = (({name, type}) => {
+export const createItemService = ({ name, type }) => {
   const quantity = computeItemQuantity({ name, type });
-  const item = ItemsDAL.add({name, type, quantity});
+  const item = ItemsDAL.add({ name, type, quantity });
   return item;
-});
+};
 
+// eslint-config
 export const computeItemQuantity = ({ name, type }) => {
   // algo to compute item quantity
   // ..
@@ -13,9 +14,9 @@ export const computeItemQuantity = ({ name, type }) => {
 
   const quantity = 10;
   return quantity;
-}
+};
 
 export const getItemService = (id) => {
   const item = ItemsDAL.get(id);
   return item;
-}
+};

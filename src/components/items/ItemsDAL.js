@@ -1,7 +1,6 @@
 import Item from './Item.js';
 
 export default class ItemsDAL {
-
   static new(dbRow) {
     const item = new Item();
     item.id = dbRow.id;
@@ -11,14 +10,14 @@ export default class ItemsDAL {
     return item;
   }
 
-  static add({name, type, quantity}) {
+  static add({ name, type, quantity }) {
     // db call insert
     const row = {
       id: 45,
       name,
       type,
-      quantity
-    }
+      quantity,
+    };
     const item = this.new(row);
     return item;
   }
@@ -31,8 +30,8 @@ export default class ItemsDAL {
       id: Number(id),
       name: 'item from db',
       type: 'TYPE_B',
-      quantity: 10
-    }
+      quantity: 10,
+    };
 
     const item = this.new(row);
     return item;
