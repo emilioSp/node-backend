@@ -19,6 +19,7 @@ app.use(cors());
 app.use(body(body_limits));
 
 app.use(router.routes());
+app.use(router.allowedMethods());
 
 const server = http.createServer(app.callback());
 
