@@ -7,16 +7,9 @@ import router from './router.js';
 process.on('uncaughtException', (e) => console.error('uncaughtException', e));
 process.on('unhandledRejection', (e) => console.error('unhandledRejection', e));
 
-const body_limits = {
-  formLimit: '64mb',
-  jsonLimit: '64mb',
-  formidable: { maxFileSize: '64mb', multiples: true },
-  multipart: true,
-};
-
 const app = new koa();
 app.use(cors());
-app.use(body(body_limits));
+app.use(body({ jsonLimit: '16mb' }));
 
 app.use(router.routes());
 app.use(router.allowedMethods());
