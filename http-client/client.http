@@ -1,0 +1,24 @@
+GET localhost:8080/healthcheck
+###
+
+POST localhost:8080/echo
+Content-Type: application/json
+
+{
+  "hello": "world"
+}
+###
+
+POST localhost:8080/item
+Content-Type: application/json
+
+{
+  "name": "generic-item",
+  "type": "TYPE_C",
+  "quantity": 40
+}
+###
+
+GET localhost:8080/item/100
+Content-Type: application/json
+###
