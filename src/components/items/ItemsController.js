@@ -1,11 +1,21 @@
 import logger from '../../logger.js';
+import { validateInput } from '../../validator.js';
 import { createItemService, getItemService } from './ItemsService.js';
 
-export const createItemController = ({ name, type, quantity }) => {
-  // validation
+const createItemSchema = {
+  type: 'object',
+  properties: {
+    name: { type: 'string' },
+    type: { type: 'string' },
+  },
+  required: ['name', 'type'],
+};
 
-  logger.info(`createItemController - start`, { name, type, quantity });
-  const item = createItemService({ name, type, quantity });
+export const createItemController = ({ name, type }) => {
+  logger.info(`createItemController - start`, { name, type });
+
+  validateInput(createItemSchema, { name, type });
+  const item = createItemService({ name, type });
   return item;
 };
 

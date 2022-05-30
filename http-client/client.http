@@ -14,8 +14,7 @@ Content-Type: application/json
 
 {
   "name": "generic-item",
-  "type": "TYPE_C",
-  "quantity": 40
+  "type": "TYPE_C"
 }
 ###
 
