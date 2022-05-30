@@ -1,6 +1,8 @@
+import logger from '../../logger.js';
 import ItemsDAL from './ItemsDAL.js';
 
 export const createItemService = ({ name, type }) => {
+  logger.info('createItemService start', { name, type });
   const quantity = computeItemQuantity({ name, type });
   const item = ItemsDAL.add({ name, type, quantity });
   return item;
@@ -17,6 +19,7 @@ export const computeItemQuantity = ({ name, type }) => {
 };
 
 export const getItemService = (id) => {
+  logger.info('getItemService start', { id });
   const item = ItemsDAL.get(id);
   return item;
 };
