@@ -1,3 +1,5 @@
+import { nanoid } from 'nanoid';
+import asyncLocalStorage from './asyncStorage.js';
 import logger from './logger.js';
 import APIError from './APIError.js';
 
@@ -37,4 +39,10 @@ export const logRoute = async (ctx, next) => {
 
     logger.info(info);
   }
+};
+
+export const requestTracking = async (ctx, next) => {
+  const store = { transactionId: nanoid() };
+  asyncLocalStorage.enterWith(store);
+  await next();
 };

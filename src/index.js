@@ -3,7 +3,7 @@ import koa from 'koa';
 import cors from '@koa/cors';
 import body from 'koa-body';
 import router from './router.js';
-import { errorManager, logRoute } from './middlewares.js';
+import { errorManager, logRoute, requestTracking } from './middlewares.js';
 
 process.on('uncaughtException', (e) => console.error('uncaughtException', e));
 process.on('unhandledRejection', (e) => console.error('unhandledRejection', e));
@@ -11,6 +11,8 @@ process.on('unhandledRejection', (e) => console.error('unhandledRejection', e));
 const app = new koa();
 app.use(cors());
 app.use(body({ jsonLimit: '16mb' }));
+
+app.use(requestTracking);
 
 app.use(logRoute);
 app.use(errorManager);
