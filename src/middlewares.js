@@ -1,4 +1,22 @@
 import logger from './logger.js';
+import APIError from './APIError.js';
+
+export const errorManager = async (ctx, next) => {
+  try {
+    await next();
+  } catch (error) {
+    if (error instanceof APIError) {
+      // controlled errors
+      ctx.status = error.http_code;
+      ctx.body = error;
+    } else {
+      // uncontrolled errors
+      logger.error(error);
+      ctx.status = 500;
+      ctx.body = 'Internal server error.';
+    }
+  }
+};
 
 export const logRoute = async (ctx, next) => {
   const start = new Date();
