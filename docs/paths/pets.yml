@@ -1,0 +1,22 @@
+post:
+  summary: Create a pet
+  operationId: createPet
+  tags:
+    - pets
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+            tag:
+              type: string
+  responses:
+    200:
+      description: Expected response to a valid request
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/pet.yml'

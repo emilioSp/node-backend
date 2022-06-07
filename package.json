@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "build:docs": "swagger-cli bundle docs/openapi.yml --outfile docs/_build/openapi.yml --type yaml",
     "serve": "nodemon src/index.js"
   },
   "repository": {
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "eslint-config-emiliosp": "^1.0.18",
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.16",
+    "swagger-cli": "^4.0.4"
   }
 }
