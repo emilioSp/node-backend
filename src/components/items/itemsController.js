@@ -1,6 +1,6 @@
 import logger from '../../logger.js';
 import { validateInput } from '../../validator.js';
-import { createItemService, getItemService } from './ItemsService.js';
+import { createItemService, getItemService } from './itemsService.js';
 
 const createItemSchema = {
   type: 'object',

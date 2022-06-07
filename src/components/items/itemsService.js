@@ -1,10 +1,10 @@
 import logger from '../../logger.js';
-import ItemsDAL from './ItemsDAL.js';
+import itemsDAL from './itemsDAL.js';
 
 export const createItemService = ({ name, type }) => {
   logger.info('createItemService start', { name, type });
   const quantity = computeItemQuantity({ name, type });
-  const item = ItemsDAL.add({ name, type, quantity });
+  const item = itemsDAL.add({ name, type, quantity });
   return item;
 };
 
@@ -20,6 +20,6 @@ export const computeItemQuantity = ({ name, type }) => {
 
 export const getItemService = (id) => {
   logger.info('getItemService start', { id });
-  const item = ItemsDAL.get(id);
+  const item = itemsDAL.get(id);
   return item;
 };

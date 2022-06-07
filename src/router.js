@@ -1,6 +1,6 @@
 import { readFile } from 'fs/promises';
 import Router from '@koa/router';
-import { createItemController, getItemController } from './components/items/ItemsController.js';
+import { createItemController, getItemController } from './components/items/itemsController.js';
 const { version } = JSON.parse((await readFile('./package.json')).toString());
 
 const router = Router();

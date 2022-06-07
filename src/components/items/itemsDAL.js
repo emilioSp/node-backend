@@ -1,16 +1,15 @@
 import Item from './Item.js';
 
-export default class ItemsDAL {
-  static new(dbRow) {
+const itemsDAL = {
+  new: (dbRow) => {
     const item = new Item();
     item.id = dbRow.id;
     item.name = dbRow.name;
     item.type = dbRow.type;
     item.quantity = dbRow.quantity;
     return item;
-  }
-
-  static add({ name, type, quantity }) {
+  },
+  add: ({ name, type, quantity }) => {
     // db call insert
     const row = {
       id: 45,
@@ -18,11 +17,10 @@ export default class ItemsDAL {
       type,
       quantity,
     };
-    const item = this.new(row);
+    const item = itemsDAL.new(row);
     return item;
-  }
-
-  static get(id) {
+  },
+  get: (id) => {
     // db call
     // database select
 
@@ -33,7 +31,9 @@ export default class ItemsDAL {
       quantity: 10,
     };
 
-    const item = this.new(row);
+    const item = itemsDAL.new(row);
     return item;
-  }
-}
+  },
+};
+
+export default itemsDAL;
