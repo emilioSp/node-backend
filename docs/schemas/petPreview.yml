@@ -4,5 +4,5 @@ required:
 properties:
   name:
     type: string
-  tag:
-    type: string
+  age:
+    type: number
