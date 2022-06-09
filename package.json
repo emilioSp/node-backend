@@ -7,8 +7,8 @@
   "scripts": {
     "build:docs": "swagger-cli bundle docs/openapi.yml --outfile docs/_build/openapi.yml --type yaml",
     "serve": "yarn serve:${NODE_ENV:-development}",
-    "serve:development": "nodemon src/index.js",
-    "serve:production": "TODO"
+    "serve:development": "nodemon --inspect=0.0.0.0:9229 src/index.js",
+    "serve:production": "node src/index.js"
   },
   "repository": {
     "type": "git",

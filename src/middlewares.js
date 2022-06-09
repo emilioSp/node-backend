@@ -7,16 +7,10 @@ export const errorManager = async (ctx, next) => {
   try {
     await next();
   } catch (error) {
-    if (error instanceof APIError) {
-      // controlled errors
-      ctx.status = error.http_code;
-      ctx.body = error;
-    } else {
-      // uncontrolled errors
-      logger.error(error);
-      ctx.status = 500;
-      ctx.body = 'Internal server error.';
-    }
+    logger.error(error);
+    const errorResponse = !(error instanceof APIError) ? new APIError({ message: 'Internal server error.', http_code: 500 }) : error;
+    ctx.status = errorResponse.http_code;
+    ctx.body = { ...errorResponse, transactionId: asyncLocalStorage.getStore().transactionId };
   }
 };
 

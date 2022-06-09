@@ -4,9 +4,10 @@ import cors from '@koa/cors';
 import body from 'koa-body';
 import router from './router.js';
 import { errorManager, logRoute, requestTracking } from './middlewares.js';
+import logger from './logger.js';
 
-process.on('uncaughtException', (e) => console.error('uncaughtException', e));
-process.on('unhandledRejection', (e) => console.error('unhandledRejection', e));
+process.on('uncaughtException', (e) => logger.error('uncaughtException', e));
+process.on('unhandledRejection', (e) => logger.error('unhandledRejection', e));
 
 const app = new koa();
 app.use(cors());
@@ -21,10 +22,6 @@ app.use(router.allowedMethods());
 
 const server = http.createServer(app.callback());
 
-server.listen(8080, async (error) => {
-  if (error) {
-    console.error(error);
-  } else if (process.env.NODE_ENV !== 'test') {
-    console.log(`http serving on port 8080`);
-  }
+server.listen(80, async (error) => {
+  error ? logger.error(error) : logger.info('http serving on port 8080');
 });
