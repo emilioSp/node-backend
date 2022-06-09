@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "build:docs": "swagger-cli bundle docs/openapi.yml --outfile docs/_build/openapi.yml --type yaml",
-    "serve": "nodemon src/index.js"
+    "serve": "yarn serve:${NODE_ENV:-development}",
+    "serve:development": "nodemon src/index.js",
+    "serve:production": "TODO"
   },
   "repository": {
     "type": "git",
