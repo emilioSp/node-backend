@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "ESLint rules for Node projects",
+  "description": "Node backend starter",
   "main": "index.js",
   "type": "module",
   "scripts": {
