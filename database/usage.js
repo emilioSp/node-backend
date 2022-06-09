@@ -1,4 +1,4 @@
-import database from './index.js';
+import database, { removeUndefinedFilters } from './index.js';
 
 await database.execute('insert into pets (name, age, size) values (:name, :age, :size)', {
   name: 'pippo',
@@ -6,6 +6,20 @@ await database.execute('insert into pets (name, age, size) values (:name, :age, 
   size: 'x-large',
 });
 
-const [rows] = await database.execute('select * from pets');
+const getPet = async ({ name, age } = {}) => {
+  const query = removeUndefinedFilters(
+    `
+    SELECT * 
+    FROM pets 
+    WHERE 1 
+        AND name = :name
+        AND age >= :age`,
+    { name, age }
+  );
 
-console.log(rows);
+  const [r] = await database.execute(query, { name, age });
+  return r;
+};
+
+const r = await getPet();
+console.log(r);

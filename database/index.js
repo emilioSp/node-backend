@@ -10,4 +10,23 @@ const database = mysql.createPool({
   maxPreparedStatements: 25,
 });
 
+export const removeUndefinedFilters = (query, replacements) => {
+  const keysWithValue = Object.entries(replacements)
+    .filter(([, value]) => value !== undefined)
+    .map(([key]) => key);
+
+  const newQuery = query
+    .split('\n')
+    .filter((x) => {
+      // query part with a param
+      if (x.includes(':')) {
+        return keysWithValue.some((k) => x.includes(k));
+      }
+      return x;
+    })
+    .join(' ');
+
+  return newQuery;
+};
+
 export default database;
