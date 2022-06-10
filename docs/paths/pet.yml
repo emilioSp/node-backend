@@ -4,7 +4,12 @@ get:
   tags:
     - pets
   parameters:
-    - $ref: "../parameters/petId.yml"
+    - in: path
+      name: petId
+      schema:
+        type: integer
+      required: true
+      description: Numeric ID of the pet to get
   responses:
     200:
       description: Expected response to a valid request

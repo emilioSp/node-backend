@@ -19,3 +19,5 @@ components:
   schemas:
     pet:
       $ref: './schemas/pet.yml'
+    petPreview:
+      $ref: './schemas/petPreview.yml'

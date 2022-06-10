@@ -4,6 +4,7 @@ import logger from './logger.js';
 import APIError from './APIError.js';
 
 const ajv = new Ajv();
+ajv.addKeyword('example');
 
 export const validateInput = (jsonSchema, data) => {
   const validate = ajv.compile(jsonSchema);
