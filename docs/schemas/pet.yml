@@ -3,4 +3,5 @@ allOf:
     properties:
       id:
         type: integer
+        example: 1
   - $ref: './petPreview.yml'

@@ -4,5 +4,7 @@ required:
 properties:
   name:
     type: string
+    example: 'Mami'
   age:
     type: number
+    example: 10
