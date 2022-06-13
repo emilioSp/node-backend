@@ -1,6 +1,7 @@
 import combine from 'swagger-combine';
 import logger from '../../logger.js';
-import { validateInput } from '../../validator.js';
+import { validateInput } from '../../utils/validator.js';
+import responseBuilder from '../../utils/responseBuilder.js';
 import petsService from './petsService.js';
 
 const get = async (petId) => {
@@ -19,11 +20,15 @@ const list = async ({ size }) => {
 
 const create = async ({ name, age, size }) => {
   logger.info('petsController:create', { name, age, size });
-  const petSchema = await combine('./docs/schemas/petPreview.yml', { format: 'yml' });
-  validateInput(petSchema, { name, age, size });
+  const petSchemaInput = await combine('./docs/schemas/petPreview.yml', { format: 'yml' });
+  validateInput(petSchemaInput, { name, age, size });
 
   const pet = await petsService.create({ name, age, size });
-  return pet;
+  const petAPIObject = await responseBuilder({
+    schemaName: 'pet.yml',
+    object: pet,
+  });
+  return petAPIObject;
 };
 
 const petsController = {

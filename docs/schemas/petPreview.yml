@@ -8,3 +8,6 @@ properties:
   age:
     type: number
     example: 10
+  size:
+    type: string
+    enum: ['x-small','small','medium','large','x-large']

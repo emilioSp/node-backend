@@ -1,7 +1,7 @@
 import Ajv from 'ajv';
 import betterAjvErrors from 'better-ajv-errors';
-import logger from './logger.js';
-import APIError from './APIError.js';
+import logger from '../logger.js';
+import APIError from '../APIError.js';
 
 const ajv = new Ajv();
 ajv.addKeyword('example');
