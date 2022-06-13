@@ -10,8 +10,12 @@ process.on('uncaughtException', (e) => logger.error('uncaughtException', e));
 process.on('unhandledRejection', (e) => logger.error('unhandledRejection', e));
 
 const app = new koa();
-app.use(cors());
-app.use(body({ jsonLimit: '16mb' }));
+app.use(
+  cors({
+    credentials: true,
+  })
+);
+app.use(body());
 
 app.use(requestTracking);
 
