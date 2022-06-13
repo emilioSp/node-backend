@@ -1780,6 +1780,11 @@ end-of-stream@^1.1.0:
   dependencies:
     once "^1.4.0"
 
+envk@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/envk/-/envk-3.2.0.tgz#e1162871cf9dece33b85d443cfd575cb4e176621"
+  integrity sha512-VHPJuH3vtN4ELcCFH6Y+3eynJVdaWw+laMW83CUMozNwKPNFajNwMlQkvLbdu4kbkDf/VwGczfGiDH0HT9tM7g==
+
 es-abstract@^1.19.0, es-abstract@^1.19.1, es-abstract@^1.19.2, es-abstract@^1.19.5:
   version "1.20.1"
   resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.20.1.tgz#027292cd6ef44bd12b1913b828116f54787d1814"

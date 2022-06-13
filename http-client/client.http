@@ -1,12 +1,3 @@
-POST localhost:8080/item
-Content-Type: application/json
-
-{
-  "name": "generic-item",
-  "type": "TYPE_C"
-}
-###
-
 GET localhost:80/pets/1
 ###
 

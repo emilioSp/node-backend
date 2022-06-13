@@ -7,7 +7,7 @@
   "scripts": {
     "build:docs": "swagger-cli bundle docs/openapi.yml --outfile docs/_build/openapi.yml --type yaml",
     "serve": "yarn serve:${NODE_ENV:-development}",
-    "serve:development": "nodemon --inspect=0.0.0.0:9229 src/index.js",
+    "serve:development": "NODE_ENV=development nodemon --inspect=0.0.0.0:9229 -r envk src/index.js",
     "serve:production": "node src/index.js"
   },
   "repository": {
@@ -25,6 +25,7 @@
     "@koa/router": "^10.1.1",
     "ajv": "^8.11.0",
     "better-ajv-errors": "^1.2.0",
+    "envk": "^3.2.0",
     "koa": "^2.13.4",
     "koa-body": "^5.0.0",
     "koa-no-slash": "^1.0.2",

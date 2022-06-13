@@ -1,6 +1,6 @@
 import mysql from 'mysql2/promise.js';
 
-const dbURI = 'mysql://root:password@127.0.0.1:3306/db';
+const dbURI = process.env.DB_URI;
 
 // Create the connection pool. The pool-specific settings are the defaults
 const database = mysql.createPool({
