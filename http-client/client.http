@@ -13,3 +13,18 @@ Content-Type: application/json
   "name": "Mami",
   "age": 10
 }
+
+###
+
+POST localhost:80/sign-up
+Content-Type: application/json
+
+{
+  "user_id": "Mami"
+}
+
+###
+
+GET localhost:80/auth/me
+Authorization: Bearer blableablea
+

@@ -26,6 +26,7 @@
     "ajv": "^8.11.0",
     "better-ajv-errors": "^1.2.0",
     "envk": "^3.2.0",
+    "jwt-simple": "^0.5.6",
     "koa": "^2.13.4",
     "koa-body": "^5.0.0",
     "koa-no-slash": "^1.0.2",

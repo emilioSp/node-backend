@@ -3,7 +3,7 @@ import koa from 'koa';
 import cors from '@koa/cors';
 import body from 'koa-body';
 import router from './router.js';
-import { errorManager, logRoute, requestTracking } from './middlewares.js';
+import { bearerToken, errorManager, logRoute, requestTracking } from './middlewares.js';
 import logger from './logger.js';
 
 process.on('uncaughtException', (e) => logger.error('uncaughtException', e));
@@ -17,10 +17,12 @@ app.use(
 );
 app.use(body());
 
+app.use(bearerToken);
 app.use(requestTracking);
 
 app.use(logRoute);
 app.use(errorManager);
+
 app.use(router.routes());
 app.use(router.allowedMethods());
 
