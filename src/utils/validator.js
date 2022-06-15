@@ -3,7 +3,7 @@ import betterAjvErrors from 'better-ajv-errors';
 import logger from '../logger.js';
 import APIError from '../APIError.js';
 
-const ajv = new Ajv();
+const ajv = new Ajv({ removeAdditional: true });
 ajv.addKeyword('example');
 
 export const validateInput = (jsonSchema, data) => {

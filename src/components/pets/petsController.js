@@ -20,7 +20,12 @@ const list = async ({ size }) => {
 
 const create = async ({ name, age, size }) => {
   logger.info('petsController:create', { name, age, size });
-  const petSchemaInput = await combine('./docs/schemas/petPreview.yml', { format: 'yml' });
+  const {
+    components: {
+      schemas: { petPreview: petSchemaInput },
+    },
+  } = await combine('./docs/openapi.yml', { format: 'yml' });
+
   validateInput(petSchemaInput, { name, age, size });
 
   const pet = await petsService.create({ name, age, size });
