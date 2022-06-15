@@ -26,7 +26,7 @@ app.use(errorManager);
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-const server = http.createServer(app.callback());
+export const server = http.createServer(app.callback());
 
 server.listen(80, async (error) => {
   error ? logger.error(error) : logger.info('http serving on port 80');
